@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, ObjectID, ObjectIdColumn, OneToMany } from 'typeorm';
 import { IRole } from '../../Interfaces/role.interface';
 import { UserModel } from './user.model';
 
@@ -6,10 +6,10 @@ import { UserModel } from './user.model';
 @Entity({name: 'role'})
 export class RoleModel extends BaseEntity implements IRole {
 
-  @PrimaryGeneratedColumn({ name: 'pk_role' })
-  idRole: number;
+  @ObjectIdColumn()
+  id: ObjectID;
 
-  @Column('varchar', { nullable: false, length: 30 })
+  @Column('string', { nullable: false, length: 30 })
   typeRole: string;
 
   @OneToMany((type => UserModel), (user: UserModel) => user.role)

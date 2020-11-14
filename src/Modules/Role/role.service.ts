@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { RoleModel } from '../../Common/Database/Models/role.model';
-import { Repository } from 'typeorm';
+import { MongoRepository } from 'typeorm';
 import { RoleDto } from '../../Common/Dto/role.dto';
 
 @Injectable()
 export class RoleService {
 
   @InjectRepository(RoleModel)
-  private roleRepository: Repository<RoleModel>;
+  private roleRepository: MongoRepository<RoleModel>;
 
   /**
    * Create roles

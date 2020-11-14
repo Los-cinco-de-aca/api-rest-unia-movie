@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserModel } from '../../Common/Database/Models/user.model';
-import { Repository } from 'typeorm';
+import { MongoRepository } from 'typeorm';
 import { UserDto } from '../../Common/DTO/user.dto';
 
 @Injectable()
 export class UserService {
 
   @InjectRepository(UserModel)
-  private userRepository: Repository<UserModel>;
+  private userRepository: MongoRepository<UserModel>;
 
   /**
    * Create user

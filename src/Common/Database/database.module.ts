@@ -8,13 +8,13 @@ import { ConfigModule } from '@nestjs/config';
   imports: [
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
-      type: 'postgres',
+      type: 'mongodb',
       host: process.env.DATABASE_HOST,
-      username: process.env.DATABASE_USERNAME,
-      password: process.env.DATABASE_PASSWORD,
-      database: process.env.DATABASE_NAME,
-      port: 5432,
+      database: process.env.MONGODB_DATABASE,
+      port: `${process.env.PORT}` as unknown as number,
       synchronize: true,
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
       entities: [RoleModel, UserModel],
     }),
   ],
